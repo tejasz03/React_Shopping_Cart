@@ -1,0 +1,45 @@
+import Navbar from './components/Navbar';
+import ProductList from './pages/ProductList';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout'
+import ProductDetail from './pages/ProductDetail';
+import Footer from './components/Footer';
+
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { ToastContainer, toast,Bounce } from 'react-toastify';
+  
+
+const App = () => {
+  return (
+   <>
+   <Router>
+    <ToastContainer
+position="top-right"
+autoClose={1500}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+transition={Bounce}
+/>
+
+    <div className='min-h-screen bg-gray-950 font-sans' >
+     <Navbar/>
+     <Routes>
+      <Route path= "/" element={<ProductList></ProductList>} ></Route>
+      <Route path= "/product/:id" element={<ProductDetail/>} ></Route>
+      <Route path= "/cart" element={<Cart/>} ></Route>
+      <Route path= "/checkout" element={<Checkout/>} ></Route>
+     </Routes>
+     <Footer/>
+     </div>
+   </Router>
+   </>
+  )
+}
+
+export default App
